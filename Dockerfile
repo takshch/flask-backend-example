@@ -16,10 +16,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # copy files required for app to run
 COPY app.py .
 COPY app .
-COPY .flaskenv .
 
 # tell the port number the container should expose
 EXPOSE 5000
 
 # run the application
-CMD python -m flask run
+CMD export ENV=production && python -m flask run --host=0.0.0.0
